@@ -1,6 +1,10 @@
+from functions import hex_to_char
+
 #single byte XOR cipher
 hex_str = input('Enter hex string: ')
-base_str = bytes.fromhex(hex_str)
+base_str = hex_to_char(hex_str).encode('utf-8')
+
+
 
 
 # stores most common chars in reversed order: #etaoin shrdlu
@@ -14,6 +18,7 @@ def single_xor(s, key):
 
 #calc english score 
 def score_Eng(s):
+    
     score = 0
     s = s.lower()
     
