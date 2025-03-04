@@ -2,10 +2,8 @@ from functions import hex_to_char
 
 #single byte XOR cipher
 hex_str = input('Enter hex string: ')
-base_str = hex_to_char(hex_str).encode('utf-8')
 
-
-
+base_str = hex_to_char(hex_str.lower())
 
 # stores most common chars in reversed order: #etaoin shrdlu
 common = b"etaoin shrdlu"[::-1]
@@ -36,7 +34,7 @@ def score_Eng(s):
         
 # track most likely plaintext
 max_score = 0 
-best = ''
+best = base_str
 key  = 0
 
 #try all possible chars
@@ -50,5 +48,5 @@ for num in range(255):
         key = num
 
 # print results
-print('key:', key)
-print('decoded string:',  best.decode('utf-8'))
+print('key:', key, max_score)
+print('decoded string:',  best)
