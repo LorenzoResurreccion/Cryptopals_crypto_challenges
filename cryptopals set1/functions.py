@@ -2,11 +2,11 @@ import string
 
 '''implemented in challenge 1'''
 #hex alphebet for quick conversion from char to int
-hex = {'0':0, '1':1, '2':2, '3':3, '4':4, '5':5,'6':6, '7':7, '8':8, 
+hex_to_num = {'0':0, '1':1, '2':2, '3':3, '4':4, '5':5,'6':6, '7':7, '8':8, 
        '9':9, 'a':10, 'b':11, 'c':12, 'd':13, 'e':14, 'f':15}
 
 # split hex into chunks
-def split_hex(data, size):
+def split_data(data, size):
     curr = []
     res = []
     # split into pairs to be converted
@@ -21,11 +21,11 @@ def split_hex(data, size):
 
 # convert hex to chars
 def hex_to_char(data):
-    data = split_hex(data, 2)
+    data = split_data(data, 2)
     converted = []
     for c1, c2 in data:
-        c1= hex[c1]
-        c2 = hex[c2]
+        c1= hex_to_num[c1]
+        c2 = hex_to_num[c2]
         byte = c1 <<4 | c2
         converted.append(byte)
 
@@ -50,7 +50,7 @@ def num_to_base64(num):
 # converts hext to b64 chars
 def hex_to_b64(data):
     # split into groups of 3
-    data = split_hex(data, 3)
+    data = split_data(data, 3)
     converted = ''
 
 
@@ -81,4 +81,29 @@ def score_Eng(s):
             score += amt
   
     return score
+
+'''implemented in challenge 5'''
+num_to_hex = {0:'0',  1:'1', 2:'2', 3:'3', 4:'4', 5:'5', 6:'6', 7:'7',
+            8:'8', 9:'9', 10:'a', 11:'b', 12:'c', 13:'d', 14:'e', 15:'f'}
+
+
+#fxn for turning intger into hex
+def int_to_hex(num):
+    chr1 = num >>4
+    chr2 = num & 15
+    return num_to_hex[chr1] + num_to_hex[chr2]
+
+
+#fxn for implementing multi-char key encryption
+def vig_enc(data, key):
+    n = len(key)
+    key_idx = 0
+    res = ''
+    for byte in data:
+        num = byte ^ key[key_idx]
+        hex_num = int_to_hex(num)
+        res += hex_num
+        key_idx = (key_idx + 1) % n
+    return res
+
         
