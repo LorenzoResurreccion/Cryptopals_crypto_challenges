@@ -53,7 +53,18 @@ def hex_to_b64(data):
     data = split_data(data, 3)
     converted = ''
 
+    # convert 3 chars into binary: 2 b64 chars
+    for trio in data:
+        bin1 = bin(hex[trio[0]])[2:].zfill(4)
+        bin2 = bin(hex[trio[1]])[2:].zfill(4)
+        bin3 = bin(hex[trio[2]])[2:].zfill(4)
+        full_bin= str(bin1) + str(bin2) + str(bin3)
+        num1 = int(full_bin[:6],  2) # numval of char1
+        num2 = int(full_bin[6:], 2)# num val of char 2
+        
+        converted+= num_to_base64(num1) + num_to_base64(num2)
 
+    return converted
 
 '''implemnted in challenge 3'''
 # stores most common chars in reversed order: #etaoin shrdlu
