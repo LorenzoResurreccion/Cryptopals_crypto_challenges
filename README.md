@@ -24,7 +24,8 @@ Used Previous functions to check each line and saved the single most probable pl
 
 #### Challenge 5: Implement repeating-key XOR
 Given a plaintext, and multiple-chaacter length key, encrypt the plaintext and output the ciphertext\
-Implemented functions for performing the encryption and converting integers to hex
+Implemented functions for performing the encryption and converting integers to hex\
+Essentially functions as encryption/decryption of vigenére cipher
 
 #### Challenge 6: Break repeating-key XOR
 
