@@ -1,7 +1,7 @@
 On the Cryptopals website, they presented various coding challenges pertaining to various topics and ideas within cryptography. 
 This repository stores my various attempts at creating solutions for these sets of challenges.
 
-Set 1:\n
+Set 1:
 Challenge 1: Convert Hex to base64
 Challenge 2: Fixed XOR
 Challenge 3: Single-byte XOR cipher
